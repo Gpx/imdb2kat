@@ -1,0 +1,22 @@
+{
+	"name": "IMDB2kat",
+	"version": "1.0",
+	"manifest_version": 4,
+	"description": "Search on KickassTorrents directly from IMDB",
+	"icons": {
+		"128": "logo.png",
+		"48": "logo.png",
+		"16": "logo.png"
+	},
+	"permissions": [
+		"tabs",
+		"http://www.imdbapi.com/"
+	],
+	"page_action": {
+		"default_icon": "icon.png",
+		"default_title": "Search this movie on kat.ph"
+	},
+	"background": {
+		"scripts": ["jquery.js", "background.js"]
+	}
+}
