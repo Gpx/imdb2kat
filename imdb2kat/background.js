@@ -7,7 +7,7 @@ var parseTabUrl = function ( tab ) {
 
 var getImdbId = function ( tab ) {
 	var match = parseTabUrl(tab);
-	return match[1];
+	return (match[1]).replace('tt', '');
 };
 
 var isImdbMoviePage = function ( tab ) {
@@ -23,9 +23,5 @@ chrome.tabs.onUpdated.addListener( function( tabId, changeInfo, tab ) {
 } );
 
 chrome.pageAction.onClicked.addListener( function ( tab ) {
-	var imdbId = getImdbId(tab);
-	$.getJSON('http://www.imdbapi.com', { i : imdbId })
-	.done(function ( movie ) {
-		chrome.tabs.create({ url: 'http://kat.ph/usearch/' + movie.Title + '/' });
-	});
+	chrome.tabs.create({ url: 'http://kickass.to/usearch/imdb:' + getImdbId(tab) + '/' });
 } );
